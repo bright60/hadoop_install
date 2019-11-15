@@ -1,0 +1,12 @@
+#VERSION_NUMBER=2.7.4.0-118
+[ambari-2.7.4.0]
+#json.url = http://public-repo-1.hortonworks.com/HDP/hdp_urlinfo.json
+name=ambari Version - ambari-2.7.4.0
+#baseurl=http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.4.0
+baseurl=http://192.168.101.65:8181/hdp/ambari/centos7/2.7.4.0-118
+gpgcheck=1
+#gpgkey=http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.4.0/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+gpgkey=http://192.168.101.65:8181/hdp/ambari/centos7/2.7.4.0-118/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+

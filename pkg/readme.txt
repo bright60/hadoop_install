@@ -1,0 +1,3 @@
+Due to remote jdk-8u121-linux-x64.rpm file size exceeds GitHub's file size limit of 100.00 MB...
+
+Please download jdk-8u121-linux-x64.rpm into pkg folder manually if you need to install jdk using this script.

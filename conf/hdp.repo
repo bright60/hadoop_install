@@ -1,0 +1,20 @@
+#VERSION_NUMBER=3.1.4.0-315
+[HDP-3.1.4.0]
+name=HDP Version - HDP-3.1.4.0
+#baseurl=http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0
+baseurl=http://192.168.101.65:8181/hdp/HDP/centos7/3.1.4.0-315
+gpgcheck=1
+#gpgkey=http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+gpgkey=http://192.168.101.65:8181/hdp/HDP/centos7/3.1.4.0-315/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1
+
+
+[HDP-UTILS-1.1.0.22]
+name=HDP-UTILS Version - HDP-UTILS-1.1.0.22
+#baseurl=http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos7
+baseurl=http://192.168.101.65:8181/hdp/HDP-UTILS/centos7/1.1.0.22
+gpgcheck=1
+gpgkey=http://192.168.101.65:8181/hdp/HDP-UTILS/centos7/1.1.0.22/RPM-GPG-KEY/RPM-GPG-KEY-Jenkins
+enabled=1
+priority=1

@@ -1,0 +1,10 @@
+drop database If Exists scm;
+drop database If Exists amon;
+drop database If Exists rman;
+drop database If Exists hue;
+drop database If Exists metastore;
+drop database If Exists sentry;
+drop database If Exists nav;
+drop database If Exists navms;
+drop database If Exists oozie;
+drop database If Exists hive;
