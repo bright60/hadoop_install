@@ -12,10 +12,12 @@ You can refer to official documentations for more details:
 * https://docs.cloudera.com/documentation/enterprise/6/6.3.html , Release Date: October 11, 2019<br>
 CDH 6 is based on Apache Hadoop 3. For more information, see [CDH 6 Packaging Information](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_packaging.html "CDH 6 Packaging Information"). <br>
 CDH 5 is based on Apache Hadoop 2.3.0 or later. For information on the exact Apache Hadoop version included in each CDH 5 version, see CDH 5 Packaging and Tarball Information.<br>
-
-* https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html
-
 Please note that you can only install CDH 6.0 or higher on up to **100 hosts **in Cloudera Express.
+ The version of services lists in https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_63_packaging.html#cdh_631_packaging
+ 
+* https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html <br>
+ The version of services lists in HDP-3.1.4: http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-315.xml
+
 
 ## How to use?
 
