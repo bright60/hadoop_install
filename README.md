@@ -3,7 +3,7 @@ The shell script is to install/uninstall Cloudera and Ambari for Hadoop in Cento
 
 ## How to get?
 
-git clone https://github.com/bright60/hadoop_install.git
+Download zip file or clone from git
 
 The current scripts support Cloudera 6.3.x and Ambari 2.4.x, please to get the old version scripts if you need to use the previous version of Cloudera or Ambari.
 
