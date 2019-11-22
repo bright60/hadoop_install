@@ -146,6 +146,8 @@ function ambari_install()
 		exit 1;
 	fi
 
+	init_yum_ambari_repos
+
 	init_master $my_host_name
 
 	init_ambari_server

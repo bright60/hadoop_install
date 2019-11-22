@@ -23,11 +23,36 @@ if [ "$ostype" == "" ];then
         echo ""
         exit
 fi
+
+function init_mysql_jdbc()
+{
+	echo ""
+	echo "call $FUNCNAME ..."
+	
+	#install JDBC driver
+	#yum install mysql-connector-java -y
+	
+	[ -d /usr/share/java ] || mkdir -p /usr/share/java
+	[ -f /usr/share/java/mysql-connector-java.jar ] && mv -f /usr/share/java/mysql-connector-java.jar  /usr/share/java/mysql-connector-java.jar.$(date +%Y-%m-%d_%Hh%Mm%Ss)
+
+	cp -vf $BASEDIR/pkg/$MYSQLJDBC_DRIVER_PKG       /usr/share/java/mysql-connector-java.jar
+	chmod 644 /usr/share/java/mysql-connector-java.jar
+
+	echo ""
+	ls -l /usr/share/java/mysql-connector-java.jar
+
+	echo ""
+	echo "Done, $FUNCNAME"
+}
+
  
 function jdk_install()
 {
-echo "====== Start to install $JDK_PKG_VERSION on $(date +%Y-%m-%d_%Hh%Mm%Ss) ======"
-source /etc/profile
+	echo ""
+	echo "call $FUNCNAME ..."
+
+	echo "====== Start to install $JDK_PKG_VERSION on $(date +%Y-%m-%d_%Hh%Mm%Ss) ======"
+	source /etc/profile
  
 #====== Install JDK ======
 #Check if OpenJDK was installed, by BX, on 2013-08-26
@@ -107,12 +132,8 @@ if [ "$JDK_IS_INSTALLED" != "1" ];then
 	fi
 
 	#install JDBC driver
-	#yum install mysql-connector-java -y
-
-	[ -f /usr/share/java/mysql-connector-java.jar ] && mv -f /usr/share/java/mysql-connector-java.jar  /usr/share/java/mysql-connector-java.jar.$(date +%Y-%m-%d_%Hh%Mm%Ss)
-	cp -vf $BASEDIR/pkg/$MYSQLJDBC_DRIVER_PKG	/usr/share/java/mysql-connector-java.jar
-	chmod 644 /usr/share/java/mysql-connector-java.jar
-
+	init_mysql_jdbc
+	
 	#Setting evn
 	JRE_HOME=$JAVA_HOME/jre
 	CLASS_PATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib

@@ -426,10 +426,32 @@ function init_cloudera_manager_server()
 	echo "Done, $FUNCNAME"
 }
 
+function init_mysql_jdbc()
+{
+	echo ""
+	echo "call $FUNCNAME ..."
+
+        #install JDBC driver
+        #yum install mysql-connector-java -y
+
+	[ -d /usr/share/java ] || mkdir -p /usr/share/java
+	[ -f /usr/share/java/mysql-connector-java.jar ] && mv -f /usr/share/java/mysql-connector-java.jar  /usr/share/java/mysql-connector-java.jar.$(date +%Y-%m-%d_%Hh%Mm%Ss)
+	cp -vf $BASEDIR/pkg/$MYSQLJDBC_DRIVER_PKG       /usr/share/java/mysql-connector-java.jar
+	chmod 644 /usr/share/java/mysql-connector-java.jar
+	echo ""	
+	ls -l /usr/share/java/mysql-connector-java.jar
+
+	echo ""
+	echo "Done, $FUNCNAME"
+}
+
 function init_mysql_server()
 {
 	echo ""
 	echo "call $FUNCNAME ..."
+	
+	init_mysql_jdbc
+	
 	rpm -ivh https://repo.mysql.com/mysql57-community-release-el7-11.noarch.rpm
 	#yum update
 	yum -y install mysql-server
@@ -464,7 +486,7 @@ function init_mysql_client()
 	#yum search mysql-community-client	
 	yum -y install mysql-community-client
 
-	ls -l /usr/share/java/mysql-connector-java.jar
+	init_mysql_jdbc
 
 	echo ""
 	echo "Done, $FUNCNAME"
@@ -531,7 +553,7 @@ init_base_server()
 	
 	init_hostname	$my_host_name
 
-	init_yum_repos
+	#init_yum_repos
 	init_hosts_file
 	init_network
 	init_firewall

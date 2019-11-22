@@ -63,8 +63,8 @@ mainversion=$version
 echo "ostype: $ostype"
 echo "version: $mainversion.x.x"
 
-if [ "$ostype" != "CentOS" ] &&  [ "$mainversion" != "7" ]; then
-        echo "*****: The current OS is $ostype, main version: $version, this installation scriptss only support 7.x !"
+if [ "$ostype" != "CentOS" ] || [ "$mainversion" != "7" ]; then
+        echo "*****: The current OS is $ostype, main version: $version, this installation scriptss only support CentOS 7.x !"
 	exit 1
 fi
 

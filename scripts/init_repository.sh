@@ -190,19 +190,34 @@ init_local_parcel_repository()
 }
 
 
-function init_yum_repos()
+function init_yum_ambari_repos()
 {
 	echo ""
 	echo "call $FUNCNAME ..."
 	echo ""
+
+	[ -f /etc/yum.repos.d/ambari.repo ] && mv -vf /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/ambari.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
+	cp -vf $BASEDIR/conf/ambari.repo	/etc/yum.repos.d/ambari.repo
+
+	[ -f /etc/yum.repos.d/hdp.repo ] && mv -vf /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/hdp.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
+	cp -vf $BASEDIR/conf/hdp.repo		/etc/yum.repos.d/hdp.repo
+	
+	yum clean all
+	yum makecache
+	yum repolist
+
+	echo ""
+	echo "Done, $FUNCNAME"
+}
+
+function init_yum_cloudera_repos()
+{
+	echo ""
+	echo "call $FUNCNAME ..."
+	echo ""
+
 	[ -f /etc/yum.repos.d/cloudera-manager.repo ] && mv /etc/yum.repos.d/cloudera-manager.repo /etc/yum.repos.d/cloudera-manager.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
 	cp -vf $BASEDIR/conf/cloudera-manager.repo      /etc/yum.repos.d/cloudera-manager.repo
-
-	[ -f /etc/yum.repos.d/hdp.repo ] && mv /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/hdp.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
-	cp -vf $BASEDIR/conf/hdp.repo   /etc/yum.repos.d/hdp.repo
-	
-	[ -f /etc/yum.repos.d/ambari.repo ] && mv /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/ambari.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
-	cp -vf $BASEDIR/conf/ambari.repo        /etc/yum.repos.d/ambari.repo
 
 	yum clean all
 	yum makecache

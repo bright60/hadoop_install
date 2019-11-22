@@ -45,7 +45,7 @@ max_server_number=100
 
 # parcel and gplextras config are only for Cloudera.
 # parcel files will be downloaded into /opt/cloudera/parcel-repo/ in master server(cloudera server)
-#parcel_base_path=https://archive.cloudera.com/cdh6/6.3.1/parcels/
+#parcel_base_path="https://archive.cloudera.com/cdh6/6.3.1/parcels/"
 parcel_base_path="http://192.168.101.65:8181/cloudera-repos/cdh6/6.3.1/parcels"
 parcel_pkg="CDH-6.3.1-1.cdh6.3.1.p0.1470567-el7.parcel"
 

@@ -80,6 +80,8 @@ cloudera_install()
 		exit 1;
 	fi
 
+	init_yum_cloudera_repos
+
 	init_master $my_host_name
 
 	init_local_parcel_repository
