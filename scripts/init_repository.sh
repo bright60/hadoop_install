@@ -195,6 +195,9 @@ function init_yum_ambari_repos()
 	echo ""
 	echo "call $FUNCNAME ..."
 	echo ""
+	
+	#backup cloudera-manager.repo when installing ambari
+	[ -f /etc/yum.repos.d/cloudera-manager.repo ] && mv /etc/yum.repos.d/cloudera-manager.repo /etc/yum.repos.d/cloudera-manager.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
 
 	[ -f /etc/yum.repos.d/ambari.repo ] && mv -vf /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/ambari.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
 	cp -vf $BASEDIR/conf/ambari.repo	/etc/yum.repos.d/ambari.repo
@@ -215,6 +218,10 @@ function init_yum_cloudera_repos()
 	echo ""
 	echo "call $FUNCNAME ..."
 	echo ""
+
+	#backup ambari and hdp when installing cloudera_repos	
+	[ -f /etc/yum.repos.d/ambari.repo ] && mv -vf /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/ambari.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
+	[ -f /etc/yum.repos.d/hdp.repo ] && mv -vf /etc/yum.repos.d/hdp.repo /etc/yum.repos.d/hdp.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
 
 	[ -f /etc/yum.repos.d/cloudera-manager.repo ] && mv /etc/yum.repos.d/cloudera-manager.repo /etc/yum.repos.d/cloudera-manager.repo.$(date +%Y-%m-%d_%Hh%Mm%Ss)
 	cp -vf $BASEDIR/conf/cloudera-manager.repo      /etc/yum.repos.d/cloudera-manager.repo
