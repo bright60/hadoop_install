@@ -398,6 +398,9 @@ remove_ambari_database()
 	echo ""
 	echo "removing database ..."
 	
+	#make sure mysql command is included in PATH in /etc/profile file
+	source /etc/profile
+	
 	mysql_command_path=`which mysql`
        	$mysql_command_path -h$MYSQL_DB_SERVER -u$MYSQL_DB_USER -p$MYSQL_DB_PASS < $BASEDIR/conf/database/uninstall-ambari-mysql-db.sql && echo "done 1/1"
 	
