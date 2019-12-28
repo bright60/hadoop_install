@@ -243,6 +243,22 @@ tar xvfz HDP-UTILS-1.1.0.22-centos7.tar.gz
 chown -R apache.apache /var/www/html/hdp
 ```
 
+### 3) Add Version and type two urls in "Select Version" step during the web page of Ambari installation:
+
+* In "HDP-3.1" tab of "Select Version" step, click "Add Version" in dropdown list, choose "Version Definition File URL", and then type： http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-315.xml <br>
+and then make sure HDP-3.1.4.0-315 is selected in dropdown list. (Please note the version definition can be different for different Ambari version.)
+* In "Repositories" session, choose "Use Local Repository", and only keep "redhat7" row and remove other rows, type the follow two urls in Base URL column:
+```
+(please repalce your local repo server IP and PORT number!)
+
+http://192.168.101.65:8181/hdp/HDP/centos7/3.1.4.0-315/
+http://192.168.101.65:8181/hdp/HDP-UTILS/centos7/1.1.0.22/
+
+Un-check: Skip Repository Base URL validation (Advanced)
+Un-check: Use RedHat Satellite/Spacewalk
+
+```
+
 ## 6. Cloudera repos
 ### 1) Cloudera, three repos (Cloudera Manage repos, CDH repos and parcel repos)
 Refer to: https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_package_repo.html#internal_package_repo
