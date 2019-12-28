@@ -15,7 +15,7 @@ CDH 5 is based on Apache Hadoop 2.3.0 or later. For information on the exact Apa
 Please note that you can only install CDH 6.0 or higher on up to **100 hosts **in Cloudera Express. <br><br>
  The version of services lists in https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_63_packaging.html#cdh_631_packaging <br>
  
-* Ambari (HDP): https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html  and https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/ch_Getting_Ready.html <br>
+* Ambari (HDP): https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html  and https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/ch_Getting_Ready.html <br><br>
  The version of services lists in HDP-3.1.4:  http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-315.xml <br>
 
 
