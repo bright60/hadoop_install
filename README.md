@@ -9,14 +9,14 @@ The current scripts support Cloudera 6.3.x and Ambari 2.4.x, please to get the o
 
 You can refer to official documentations for more details:
 
-* https://docs.cloudera.com/documentation/enterprise/6/6.3.html , Release Date: October 11, 2019 <br>
+* Cloudera（CDH）: https://docs.cloudera.com/documentation/enterprise/6/6.3.html , Release Date: October 11, 2019 <br>
 CDH 6 is based on Apache Hadoop 3. For more information, see [CDH 6 Packaging Information](https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_packaging.html "CDH 6 Packaging Information"). <br>
 CDH 5 is based on Apache Hadoop 2.3.0 or later. For information on the exact Apache Hadoop version included in each CDH 5 version, see CDH 5 Packaging and Tarball Information.<br>
 Please note that you can only install CDH 6.0 or higher on up to **100 hosts **in Cloudera Express. <br><br>
  The version of services lists in https://docs.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_63_packaging.html#cdh_631_packaging <br>
  
-* https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html <br>
- The version of services lists in HDP-3.1.4: http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-315.xml <br>
+* Ambari (HDP): https://docs.cloudera.com/HDPDocuments/Ambari/Ambari-2.7.4.0/index.html  and https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/ch_Getting_Ready.html <br>
+ The version of services lists in HDP-3.1.4:  http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-315.xml <br>
 
 
 ## How to use?
@@ -214,7 +214,36 @@ server ntp2.aliyun.com iburst
 * check conf/database/ambari-mysql-db.sql or conf/database/cloudera-mysql-db.sql, database name, dbuser and dbpass will be used during instalation in web page.
 * the dbuser and dbpass must be consistent in scripts/config.sh and conf/database/*.sql files.
 
-## 5. repos issue
+## 5. Ambari repos
+### 1) setup local repos server
+Please refer to： https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/setting_up_a_local_repository_with_no_internet_access.html
+```
+yum install httpd
+systemctl enable httpd
+systemctl start httpd
+
+mkdir -p /var/www/html/hdp
+```
+
+### 2) download three .tar.gz files (Ambari, HDP and HDP-UTILS)
+there are the download url of three packages in https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/ambari_repositories.html and https://docs.cloudera.com/HDPDocuments/Ambari-2.7.4.0/bk_ambari-installation/content/hdp_314_repositories.html
+```
+wget http://public-repo-1.hortonworks.com/ambari/centos7/2.x/updates/2.7.4.0/ambari-2.7.4.0-centos7.tar.gz
+wget http://public-repo-1.hortonworks.com/HDP/centos7/3.x/updates/3.1.4.0/HDP-3.1.4.0-centos7-rpm.tar.gz
+wget http://public-repo-1.hortonworks.com/HDP-UTILS-1.1.0.22/repos/centos7/HDP-UTILS-1.1.0.22-centos7.tar.gz
+cp ambari-2.7.4.0-centos7.tar.gz /var/www/html/hdp
+cp HDP-3.1.4.0-centos7-rpm.tar.gz /var/www/html/hdp
+cp HDP-UTILS-1.1.0.22-centos7.tar.gz /var/www/html/hdp
+
+cd /var/www/html/hdp
+tar xvfz ambari-2.7.4.0-centos7.tar.gz
+tar xvfz HDP-3.1.4.0-centos7-rpm.tar.gz
+tar xvfz HDP-UTILS-1.1.0.22-centos7.tar.gz
+
+chown -R apache.apache /var/www/html/hdp
+```
+
+## 6. Cloudera repos
 ### 1) Cloudera, three repos (Cloudera Manage repos, CDH repos and parcel repos)
 Refer to: https://docs.cloudera.com/documentation/enterprise/6/6.3/topics/cm_ig_create_local_package_repo.html#internal_package_repo
 #### a. Cloudera Manager repo
