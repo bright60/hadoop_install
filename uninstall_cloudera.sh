@@ -311,6 +311,23 @@ remove_cloudera_data()
 	echo ""
 	echo "Done, $FUNCNAME"
 }
+
+remove_cloudera_repos()
+{
+	echo ""
+	echo "call $FUNCNAME ..."
+ 
+ 	echo ""
+	echo "Start to execute the remove operations..."
+	echo ""
+	
+ 	#$ssh_command $host "rm -rfv /etc/yum.repos.d/ambari.repo"
+	#$ssh_command $host "rm -rfv /etc/yum.repos.d/hdp.repo"
+	$ssh_command $host "rm -rfv /etc/yum.repos.d/cloudera-manager.repo"  
+	
+	echo ""
+	echo "Done, $FUNCNAME"
+}
 	
 remove_cloudera_database()
 {
@@ -372,6 +389,7 @@ uninstall_cloudera()
 	uninstall_cloudera_software
 	remove_cloudera_data	
 	remove_cloudera_database
+	remove_cloudera_repos
 
 	echo ""
 

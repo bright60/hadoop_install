@@ -288,6 +288,24 @@ remove_ambari_data()
 	echo "Done, $FUNCNAME"
 }
 
+remove_ambari_repos()
+{
+	echo ""
+	echo "call $FUNCNAME ..."
+ 
+ 	echo ""
+	echo "Start to execute the remove operations..."
+	echo ""
+	
+ 	$ssh_command $host "rm -rfv /etc/yum.repos.d/ambari.repo"
+	$ssh_command $host "rm -rfv /etc/yum.repos.d/hdp.repo"
+	#$ssh_command $host "rm -rfv /etc/yum.repos.d/cloudera-manager.repo"  
+	
+	echo ""
+	echo "Done, $FUNCNAME"
+}
+
+
 remove_ambari_users()
 {
 	echo ""
@@ -431,7 +449,7 @@ uninstall_ambari()
 				remove_ambari_data
 				remove_ambari_users
 				remove_ambari_database
-
+				remove_ambari_repos
 				break	
 				;;
 		
